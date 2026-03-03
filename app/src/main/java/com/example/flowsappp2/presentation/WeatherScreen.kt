@@ -102,17 +102,16 @@ fun WeatherScreen(
                             )
                         }
                         HorizontalDivider()
-
                     }
                 }
-            }
-            if(state.isLoading) CircularProgressIndicator()
+                state.data?.let {
+                    Text(
+                        text = "Weather in ${state.selectedCityName} : ${it.temperature}",
+                        style = MaterialTheme.typography.displaySmall
+                    )
+                }
+                if(state.isLoading) CircularProgressIndicator()
 
-            state.data?.let {
-                Text(
-                    text = "Weather in ${state.selectedCityName} : ${it.temperature}",
-                    style = MaterialTheme.typography.displaySmall
-                )
             }
         }
 }
